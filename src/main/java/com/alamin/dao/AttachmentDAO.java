@@ -1,6 +1,7 @@
 package com.alamin.dao;
 
 import com.alamin.model.Attachment;
+import com.alamin.model.Location;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class AttachmentDAO {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public long insert(Attachment attachment) {
+    public Long insert(Attachment attachment) {
         long id = -1L;
         Session session = sessionFactory.getCurrentSession();
 
@@ -40,4 +41,21 @@ public class AttachmentDAO {
         }
         session.flush();
     }
+
+    public Attachment getById(Long id) {
+        Attachment attachment = null;
+        Session session = sessionFactory.getCurrentSession();
+
+        try {
+            attachment = session.get(Attachment.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        session.flush();
+
+        return attachment;
+    }
+
+
 }

@@ -20,15 +20,22 @@ public class WebMVCConfig implements WebMvcConfigurer {
         // Register resource handler for -
 
         // IMAGES
-        registry.addResourceHandler(
-                        "/images/**",
-                        "/user/add/images/**"
-                ) // Relative paths
-                .addResourceLocations(
-                        "/WEB-INF/resources/images/",
-                        "file:///" + Constant.WRITE_PATH + "/"
-                ) // Actual resource locations
-                .setCachePeriod(999999999); // Cache period
+//        registry.addResourceHandler("/images/**",
+//                        "/user/add/images/**"
+//                ) // Relative paths
+//                .addResourceLocations(
+//                        "/WEB-INF/resources/images/",
+//                        "file:///" + Constant.WRITE_PATH + "/"
+//                ) // Actual resource locations
+//                .setCachePeriod(999999999); // Cache period
+
+        // CSS
+//        registry
+//                .addResourceHandler("/images/**") // Relative paths
+//                .addResourceLocations(
+//                        "/WEB-INF/resources/images/"
+//                ) // Actual resource locations
+//                .setCachePeriod(999999999); // Cache period
 
         // CSS
         registry

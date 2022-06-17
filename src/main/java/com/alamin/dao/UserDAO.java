@@ -1,8 +1,10 @@
 package com.alamin.dao;
 
+import com.alamin.model.Location;
 import com.alamin.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserDAO {
     @Autowired
     private SessionFactory sessionFactory;
+    @Autowired
+    LocationDAO locationDAO;
 
 
 
@@ -32,7 +36,18 @@ public class UserDAO {
     }
 
     public User getById(Long id) {
-        User user = sessionFactory.getCurrentSession().get(User.class, id.toString());
+//        User user = sessionFactory.getCurrentSession().get(User.class, id.toString());
+        User user = new User();
+        Session session = sessionFactory.getCurrentSession();
+
+        try {
+            Query query = session.createQuery("SELECT u FROM User u WHERE u.id = :id").setParameter("id", id);
+            user = (User) query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        session.flush();
         return user;
     }
 

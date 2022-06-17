@@ -74,7 +74,7 @@ public class LocationDAO {
         }
         session.flush();
 
-        return location;
+        return getById(location.getId());
     }
 
 

@@ -38,7 +38,7 @@
                             <form:options items="${locationList}"/>
                         </form:select>
                         <br>
-                        <input path="profileImage" type="file" accept="image/*" />
+                        <input type="file" name="image" accept="image/*"/>
                         <button type="submit" class="btn btn-primary">Create</button>
                     </form:form>
                 </div>

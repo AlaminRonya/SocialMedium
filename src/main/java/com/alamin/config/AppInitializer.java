@@ -1,5 +1,6 @@
 package com.alamin.config;
 
+import com.alamin.utils.Constant;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -23,11 +24,16 @@ public class AppInitializer implements WebApplicationInitializer {
         ServletRegistration.Dynamic servletRegistration = servletContext.addServlet("servlet", new DispatcherServlet(servletConfig));
 
         // Multipart Config
-        servletRegistration.setMultipartConfig(new MultipartConfigElement("/", 2097152, 4194304, 50));
+        servletRegistration.setMultipartConfig(new MultipartConfigElement("/", Constant.MAX_UPLOAD_SIZE, Constant.MAX_UPLOAD_SIZE * 2, Constant.MAX_UPLOAD_SIZE / 2));
 
         // Multipart Filter Config
         FilterRegistration.Dynamic multipartFilter = servletContext.addFilter("multipartFilter", MultipartFilter.class);
         multipartFilter.addMappingForUrlPatterns(null, true, "/*");
+
+
+//        MultipartConfigElement multipartConfigElement = new MultipartConfigElement("/",Constant.MAX_UPLOAD_SIZE, Constant.MAX_UPLOAD_SIZE * 2, Constant.MAX_UPLOAD_SIZE / 2);
+//        servletRegistration.setMultipartConfig(multipartConfigElement);
+
 
 
 

@@ -9,13 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Data
+
 @Entity
 @Table(name = "locations")
+@Data
 public class Location implements Serializable {
 
     @Id
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
@@ -24,6 +25,9 @@ public class Location implements Serializable {
 
     @OneToMany(orphanRemoval = true, mappedBy = "location")
     private List<User> users = new ArrayList<>();
+
+//    @OneToMany(mappedBy = "location", fetch = FetchType.LAZY)
+//    private List<User> users = new ArrayList<>();
 
     @OneToMany(orphanRemoval = true, mappedBy = "location")
     private List<Status> statuses = new ArrayList<>();
