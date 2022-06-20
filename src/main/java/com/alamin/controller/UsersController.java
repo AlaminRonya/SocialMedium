@@ -60,12 +60,15 @@ public class UsersController {
 //        System.out.println(userDto+"k------------->"+System.getProperty("user.dir"));
 //        final String originalFilename = file.getOriginalFilename();
 
-        String path = session.getServletContext().getRealPath("/")+"WEB-INF"+"/resources"+"/images/"+file.getOriginalFilename();
+        String path = session.getServletContext().getRealPath("/")+Constant.USER_UPLOAD_LOCATION;
 
-        userService.insert(userDto, file, path);
+        final UserDto insert = userService.insert(userDto, file, path);
+        if (insert.getId() != null){
+            return "redirect:/show/"+insert.getId();
+        }
 //        model.addAttribute("user", user);
 //        System.out.println(user.getId());
-        return "redirect:/show/"+userDto.getId();
+        return "redirect:/user/add";
     }
 
     @GetMapping(value = "/show/{id}")

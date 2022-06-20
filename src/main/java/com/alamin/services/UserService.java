@@ -93,6 +93,7 @@ public class UserService {
         final User userById = userDAO.getById(id);
         final Location locationById = locationDAO.getById(userById.getLocation().getId());
         final Attachment attachmentById = attachmentDAO.getById(userById.getAttachment().getId());
+
         ResponseUserDto responseUserDto = new ResponseUserDto();
         responseUserDto.setId(userById.getId());
         responseUserDto.setName(userById.getName());

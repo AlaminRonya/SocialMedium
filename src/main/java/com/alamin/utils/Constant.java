@@ -9,5 +9,5 @@ public class Constant {
 
     public static final String TMP_FOLDER = "/tmp";
     public static final int MAX_UPLOAD_SIZE = 100 * 1024 * 1024;
-    public static final String USER_UPLOAD_LOCATION = "D:/S/UserImages/";
+    public static final String USER_UPLOAD_LOCATION = "WEB-INF"+"/resources"+"/images/";
 }

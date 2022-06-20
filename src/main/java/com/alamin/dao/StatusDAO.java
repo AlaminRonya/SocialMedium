@@ -17,19 +17,19 @@ public class StatusDAO {
     private SessionFactory sessionFactory;
 
 
-    public long insert(Status status) {
-        long id = -1L;
+    public Long insert(Status status) {
+
         Session session = sessionFactory.getCurrentSession();
 
         try {
-            id = (Long) session.save(status);
+            return  (Long) session.save(status);
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
         }
         session.flush();
 
-        return id;
+        return null;
     }
 
     public Status getById(Long id) {

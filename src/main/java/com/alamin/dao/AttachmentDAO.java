@@ -17,21 +17,21 @@ public class AttachmentDAO {
     private SessionFactory sessionFactory;
 
     public Long insert(Attachment attachment) {
-        long id = -1L;
+
         Session session = sessionFactory.getCurrentSession();
 
         try {
-            id = (Long) session.save(attachment);
+            return (Long) session.save(attachment);
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
         }
         session.flush();
 
-        return id;
+        return null;
     }
 
-    public void insertBulk(List<Attachment> attachments) {
+    public void insertList(List<Attachment> attachments) {
         Session session = sessionFactory.getCurrentSession();
         try {
             attachments.forEach(session::save);

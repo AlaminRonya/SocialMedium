@@ -20,14 +20,14 @@ public class Utils {
     public static Attachment saveFile(MultipartFile file, String path) throws IOException {
 
         if (!file.isEmpty()){
-//            String filePath = Constant.USER_UPLOAD_LOCATION + file.getOriginalFilename();
+            String filePath = path + file.getOriginalFilename();
 //            Path path = Paths.get(filePath);
 //            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-            file.transferTo(new File(path));
+            file.transferTo(new File(filePath));
 
             Attachment attachment = new Attachment();
             attachment.setAttachmentName(file.getOriginalFilename());
-            attachment.setAttachmentPath(path);
+            attachment.setAttachmentPath(filePath);
             attachment.setAttachmentType(file.getContentType());
             return attachment;
         }else {
