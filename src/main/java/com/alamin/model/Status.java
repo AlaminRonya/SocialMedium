@@ -4,6 +4,7 @@ package com.alamin.model;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,6 +15,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "statuses")
+@ToString
 public class Status implements Serializable {
 
     @Id
@@ -49,7 +51,7 @@ public class Status implements Serializable {
     private Location location;
 
 
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinTable(name = "status_attachments",
             joinColumns = {@JoinColumn(name = "status_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "attachment_id", referencedColumnName = "id")})

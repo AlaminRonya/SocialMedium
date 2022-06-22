@@ -2,6 +2,7 @@ package com.alamin.model;
 
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "users")
+@ToString
 public class User implements Serializable {
     @Id
     @Column(name = "id")

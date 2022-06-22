@@ -53,4 +53,9 @@ public class StatusService {
 
 
     }
+
+
+    public Status check(String id){
+        return statusDAO.getById(Long.parseLong(id));
+    }
 }

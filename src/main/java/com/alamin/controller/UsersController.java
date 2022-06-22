@@ -40,13 +40,6 @@ public class UsersController {
     @Autowired
     private LocationService locationService;
 
-    @Autowired
-    private UserDAO userDAO;
-
-    @Autowired
-    private LocationDAO locationDAO;
-    @Autowired
-    private AttachmentDAO attachmentDAO;
 
     @GetMapping("/user/add")
     public String getUser(Model model, @ModelAttribute("userDto") UserDto userDto){

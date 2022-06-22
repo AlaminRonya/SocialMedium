@@ -1,6 +1,7 @@
 package com.alamin.dao;
 
 import com.alamin.model.Status;
+import com.alamin.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -31,25 +32,19 @@ public class StatusDAO {
 
         return null;
     }
-
     public Status getById(Long id) {
-        return sessionFactory.getCurrentSession().get(Status.class, id);
-    }
-
-    public long update(Status status) {
-        long id = -1L;
+        Status status = new Status();
         Session session = sessionFactory.getCurrentSession();
 
         try {
-            session.saveOrUpdate(status);
-            id = status.getId();
-        }catch (Exception e){
+            Query query = session.createQuery("SELECT s FROM Status s WHERE s.id = :id").setParameter("id", id);
+            status = (Status) query.uniqueResult();
+        } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
         }
         session.flush();
-
-        return id;
+        return status;
     }
 
     public Long delete(Long id) {
@@ -69,8 +64,5 @@ public class StatusDAO {
         return statusList;
     }
 
-//    public List<Status> getAllByLocationId(Long locationId) {
-//        List<Status> statusList = sessionFactory.getCurrentSession().createQuery("FROM Status WHERE locationId = :locationId", Status.class).setParameter("locationId", locationId).list();
-//        return statusList;
-//    }
+
 }
