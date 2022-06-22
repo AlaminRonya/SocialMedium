@@ -33,6 +33,7 @@ import java.util.Base64;
 
 
 @Controller
+@RequestMapping("/users/v1")
 public class UsersController {
     @Autowired
     private UserService userService;
@@ -57,11 +58,11 @@ public class UsersController {
 
         final UserDto insert = userService.insert(userDto, file, path);
         if (insert.getId() != null){
-            return "redirect:/show/"+insert.getId();
+            return "redirect:/users/v1/show/"+insert.getId();
         }
 //        model.addAttribute("user", user);
 //        System.out.println(user.getId());
-        return "redirect:/user/add";
+        return "redirect:/users/v1/user/add";
     }
 
     @GetMapping(value = "/show/{id}")

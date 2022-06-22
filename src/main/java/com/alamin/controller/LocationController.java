@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/locations/v1")
 public class LocationController {
 
     @Autowired
@@ -22,7 +24,8 @@ public class LocationController {
     @PostMapping("/location/insert")
     public String locationAdd(@ModelAttribute("locationDto") LocationsDto locationsDto){
         locationService.insert(locationsDto);
-        return "location/createLocation";
+//        return "location/createLocation";
+        return "redirect:/locations/v1/location/insert";
     }
 
 

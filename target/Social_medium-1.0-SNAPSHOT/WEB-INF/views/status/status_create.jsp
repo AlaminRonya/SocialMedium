@@ -8,17 +8,18 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Status Create</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css">
-</head>
-<body>
+    <head>
+        <title>Status</title>
+        <jsp:include page="../include/css.jsp"/>
+    </head>
+    <body>
+    <jsp:include page="../include/navbar.jsp"/>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-9">
 
                 <%--@elvariable id="statusDto" type="com.alamin.dto.StatusDto"--%>
-                <form:form action="${pageContext.request.contextPath}/status/add" method="post" modelAttribute="statusDto" enctype="multipart/form-data">
+                <form:form action="${pageContext.request.contextPath}/status/v1/status/add" method="post" modelAttribute="statusDto" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Title</label>
                         <form:input type="text" cssClass="form-control" id="title" placeholder="" path="title"/>

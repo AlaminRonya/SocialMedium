@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 @Controller
+@RequestMapping("/status/v1")
 public class StatusController {
     @Autowired
     private StatusService statusService;
@@ -35,10 +36,10 @@ public class StatusController {
         final Long aLong = statusService.addStatus(statusDto, files, path);
         if (aLong !=null){
             final String id = String.valueOf(aLong);
-            return "redirect:/status/show/"+id;
+            return "redirect:/status/v1/status/show/"+id;
         }
 
-        return "redirect:/status/create";
+        return "redirect:/status/v1/status/create";
     }
 
     @GetMapping(value = "/status/show/{id}")

@@ -54,6 +54,5 @@ public class WebMVCConfig implements WebMvcConfigurer {
                 .addResourceHandler("/vendor/**") // Relative paths
                 .addResourceLocations("/WEB-INF/resources/vendor/") // Actual resource locations
                 .setCachePeriod(999999999); // Cache period
-
     }
 }

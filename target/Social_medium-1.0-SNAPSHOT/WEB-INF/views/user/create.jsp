@@ -10,16 +10,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css">
-</head>
+    <head>
+        <title>Title</title>
+        <jsp:include page="../include/css.jsp"/>
+    </head>
     <body>
-        <div class="container-fluid">
+    <jsp:include page="../include/navbar.jsp"/>
+    <div class="container-fluid">
             <div class="row">
                 <div class="col-md-9">
                     <%--@elvariable id="userDto" type=""--%>
-                    <form:form action="${pageContext.request.contextPath}/user/add" method="POST" modelAttribute="userDto" enctype="multipart/form-data">
+                    <form:form action="${pageContext.request.contextPath}/users/v1/user/add" method="POST" modelAttribute="userDto" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <form:input type="text" cssClass="form-control" id="name" placeholder="Name" path="name"/>
