@@ -1,5 +1,6 @@
 package com.alamin.config;
 
+import com.alamin.config.securities.SecurityConfig;
 import com.alamin.utils.Constant;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
@@ -14,7 +15,7 @@ public class AppInitializer implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) throws ServletException {
         // root config
         AnnotationConfigWebApplicationContext rootConfig = new AnnotationConfigWebApplicationContext();
-        rootConfig.register(DBConfig.class);
+        rootConfig.register(DBConfig.class, SecurityConfig.class);
         rootConfig.refresh();
         servletContext.addListener(new ContextLoaderListener(rootConfig));
 

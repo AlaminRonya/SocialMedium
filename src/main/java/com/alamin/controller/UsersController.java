@@ -69,6 +69,7 @@ public class UsersController {
     public String show(Model model, @PathVariable("id")String id) throws FileNotFoundException {
         final ResponseUserDto responseUserDto = userService.getUserById(Long.parseLong(id));
 
+
 //        System.out.println(id);
 
 
